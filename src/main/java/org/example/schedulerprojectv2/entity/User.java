@@ -18,5 +18,5 @@ public class User extends BaseEntity {
     @Email
     private String email;
 
-
+    private String password;
 }

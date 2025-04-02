@@ -12,6 +12,8 @@ public class Schedule extends BaseEntity{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+//    @ManyToOne 연관관계??.. 어떻게하지. 다수의 코드오류 발생
+//    @JoinColumn(name = "user_id")
     private String userName;
 
     @Column(nullable = false)
