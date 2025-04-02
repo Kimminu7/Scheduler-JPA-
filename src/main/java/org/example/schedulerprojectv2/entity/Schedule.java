@@ -12,19 +12,20 @@ public class Schedule extends BaseEntity{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-//    @ManyToOne 연관관계??.. 어떻게하지. 다수의 코드오류 발생
-//    @JoinColumn(name = "user_id")
-    private String userName;
 
     @Column(nullable = false)
     private String title;
 
+    //    @ManyToOne 연관관계??.. 어떻게하지. 다수의 코드오류 발생
+    //    @JoinColumn(name = "user_id")
+    private String userName;
+
     @Column(columnDefinition = "longtext")
     private String contents;
 
-    public Schedule(String userName, String title, String contents) {
-        this.userName = userName;
+    public Schedule(String title, String userName, String contents) {
         this.title = title;
+        this.userName = userName;
         this.contents = contents;
     }
 
