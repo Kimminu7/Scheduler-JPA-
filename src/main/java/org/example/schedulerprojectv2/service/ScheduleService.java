@@ -9,4 +9,10 @@ public interface ScheduleService {
     ScheduleResponseDto addSchedule(String title, String userName, String contents);
 
     List<ScheduleResponseDto> findAll();
+
+    ScheduleResponseDto findById(Long id);
+
+    String update(Long id, String title, String contents);
+
+    String delete(Long id);
 }
