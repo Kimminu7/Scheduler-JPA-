@@ -20,9 +20,12 @@ public class ScheduleController {
 
     // 일정 생성
     @PostMapping
-    public ResponseEntity<ScheduleResponseDto> addSchedule(@RequestBody CreateScheduleRequetsDto requetsDto) {
+    public ResponseEntity<ScheduleResponseDto> addSchedule(
+            @RequestParam Long userId,
+            @RequestBody CreateScheduleRequetsDto requetsDto
+    ) {
 
-        ScheduleResponseDto responseDto = scheduleService.addSchedule(requetsDto.getTitle(), requetsDto.getUserName(), requetsDto.getContents());
+        ScheduleResponseDto responseDto = scheduleService.addSchedule(userId ,requetsDto.getTitle(), requetsDto.getUserName(), requetsDto.getContents());
 
         return new ResponseEntity<>(responseDto, HttpStatus.CREATED);
     }

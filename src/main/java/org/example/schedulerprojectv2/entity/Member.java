@@ -7,16 +7,27 @@ import lombok.Getter;
 @Getter
 @Entity
 @Table(name = "user")
-public class User extends BaseEntity {
+public class Member extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(nullable = false)
     private String userName;
 
     @Email
     private String email;
 
     private String password;
+
+    public Member(String userName, String email, String password) {
+        this.userName = userName;
+        this.email = email;
+        this.password = password;
+    }
+
+    public Member() {
+
+    }
 }
