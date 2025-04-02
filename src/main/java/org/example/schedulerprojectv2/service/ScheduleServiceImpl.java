@@ -50,7 +50,7 @@ public class ScheduleServiceImpl implements ScheduleService {
 
     // 일정 수정
     @Override
-    // @Transactional도 가능함. ( 영속성컨텍스트 ?? ) . . .
+    // @Transactional도 가능함. ( 영속성 컨텍스트 ?? ) . . . 트랜잭션 단위를 잡는역할?
     public String update(Long id, String title, String contents) {
 
         Schedule findSchedule = scheduleRepository.findByIdOrElseThrow(id);
