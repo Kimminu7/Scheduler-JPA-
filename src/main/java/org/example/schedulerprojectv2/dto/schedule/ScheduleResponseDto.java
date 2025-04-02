@@ -1,6 +1,7 @@
 package org.example.schedulerprojectv2.dto.schedule;
 
 import lombok.Getter;
+import org.example.schedulerprojectv2.entity.Schedule;
 
 @Getter
 public class ScheduleResponseDto {
@@ -18,5 +19,9 @@ public class ScheduleResponseDto {
         this.title = title;
         this.userName = userName;
         this.contents = contents;
+    }
+
+    public static ScheduleResponseDto toDto(Schedule schedule) {
+        return new ScheduleResponseDto(schedule.getId(), schedule.getTitle(), schedule.getUserName(), schedule.getContents());
     }
 }
