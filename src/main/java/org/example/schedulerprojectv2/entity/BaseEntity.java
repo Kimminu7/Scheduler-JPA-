@@ -1,4 +1,4 @@
-package org.example.schedulerprojectv2.domain.entity;
+package org.example.schedulerprojectv2.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.EntityListeners;
@@ -16,9 +16,10 @@ import java.time.LocalDateTime;
 public abstract class BaseEntity {
 
     @CreatedDate
-    @Column(updatable = false) // 수정 불가능
-    private LocalDateTime createdAt; // 작성일
+    @Column(updatable = false)
+    private LocalDateTime createdAt;
 
     @LastModifiedDate
-    private LocalDateTime updatedAt; // 수정일
+    private LocalDateTime updatedAt;
+
 }
