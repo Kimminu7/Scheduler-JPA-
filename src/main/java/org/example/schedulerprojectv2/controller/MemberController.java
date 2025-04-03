@@ -1,5 +1,6 @@
 package org.example.schedulerprojectv2.controller;
 
+import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import org.example.schedulerprojectv2.dto.member.*;
 import org.example.schedulerprojectv2.service.MemberService;
@@ -17,13 +18,27 @@ public class MemberController {
     private final MemberService memberService;
 
     // 유저 생성
-    @PostMapping
+    @PostMapping("/signup")
     public ResponseEntity<MemberResponseDto> createMember(@RequestBody CreateMemberRequestDto requestDto) {
 
         MemberResponseDto responseDto = memberService.createMember(requestDto.getUserName(), requestDto.getEmail(), requestDto.getPassword());
 
         return new ResponseEntity<>(responseDto, HttpStatus.CREATED);
     }
+
+    @PostMapping("/login")
+    public ResponseEntity<String> login(
+            @RequestBody LoginRequestDto requestDto,
+            HttpSession httpSession
+    ) {
+        try {
+            memberService.login(requestDto, httpSession);
+            return new ResponseEntity<>("로그인 성공",HttpStatus.OK);
+        } catch (IllegalArgumentException e) {
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.UNAUTHORIZED);
+        }
+    }
+
 
     // 유저 전체 조회
     @GetMapping

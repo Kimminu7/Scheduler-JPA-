@@ -12,13 +12,12 @@ import java.io.IOException;
 @Slf4j
 public class LoginFilter implements Filter {
 
-    private static final String[] WHITE_LIST = {"/","/signup","/login","/logout"};
+    private static final String[] WHITE_LIST = {"/","/api/members/signup","/api/members/login","/api/members/logout"};
 
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
         HttpServletRequest httpRequest = (HttpServletRequest) request;
         String requestURI = httpRequest.getRequestURI();
-
 
         HttpServletResponse httpResponse = (HttpServletResponse) response;
 
@@ -28,7 +27,7 @@ public class LoginFilter implements Filter {
 
             HttpSession session = httpRequest.getSession(false);
 
-            if (session == null || session.getAttribute("sessionKey") == null) {
+            if (session == null || session.getAttribute("memberEmail") == null) {
                 throw new RuntimeException("로그인 해주세요.");
             }
 

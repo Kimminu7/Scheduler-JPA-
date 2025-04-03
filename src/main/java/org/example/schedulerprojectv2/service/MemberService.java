@@ -1,5 +1,7 @@
 package org.example.schedulerprojectv2.service;
 
+import jakarta.servlet.http.HttpSession;
+import org.example.schedulerprojectv2.dto.member.LoginRequestDto;
 import org.example.schedulerprojectv2.dto.member.MemberResponseDto;
 
 import java.util.List;
@@ -17,4 +19,6 @@ public interface MemberService {
     String updatePassword(Long id, String password);
 
     String delete(Long id);
+
+    void login(LoginRequestDto requestDto, HttpSession httpSession);
 }

@@ -1,5 +1,6 @@
 package org.example.schedulerprojectv2.controller;
 
+import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import org.example.schedulerprojectv2.dto.schedule.CreateScheduleRequetsDto;
 import org.example.schedulerprojectv2.dto.schedule.ScheduleResponseDto;
@@ -24,6 +25,9 @@ public class ScheduleController {
             @RequestParam Long userId,
             @RequestBody CreateScheduleRequetsDto requetsDto
     ) {
+
+        //로그인 여부 확인 로직
+
 
         ScheduleResponseDto responseDto = scheduleService.addSchedule(userId ,requetsDto.getTitle(), requetsDto.getUserName(), requetsDto.getContents());
 
@@ -52,8 +56,13 @@ public class ScheduleController {
     @PutMapping("/{id}")
     public ResponseEntity<String> updateSchedule(
             @PathVariable Long id,
-            @RequestBody UpdateScheduleRequestDto requestDto
+            @RequestBody UpdateScheduleRequestDto requestDto,
+            HttpSession httpSession
     ) {
+        String memberEmail = (String) httpSession.getAttribute("memberEmail");
+
+        System.out.println("memberEmail = " + memberEmail);
+
         String requestUpdate = scheduleService.update(id, requestDto.getTitle(), requestDto.getContents());
 
         return new ResponseEntity<>(requestUpdate,HttpStatus.OK);

@@ -1,12 +1,16 @@
 package org.example.schedulerprojectv2.service;
 
+import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
+import org.example.schedulerprojectv2.dto.member.LoginRequestDto;
 import org.example.schedulerprojectv2.dto.member.MemberResponseDto;
 import org.example.schedulerprojectv2.entity.Member;
 import org.example.schedulerprojectv2.repository.MemberRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Objects;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -55,6 +59,7 @@ public class MemberServiceImpl implements MemberService{
         return "id = " + id + " 사용자 정보가 성공적으로 수정되었습니다";
     }
 
+    // 유저 비밀번호만 수정
     @Override
     public String updatePassword(Long id, String password) {
 
@@ -67,6 +72,7 @@ public class MemberServiceImpl implements MemberService{
         return "password = " + updatedMember.getPassword() + " 비밀번호가 성공적으로 변경되었습니다.";
     }
 
+    // 유저 삭제
     @Override
     public String delete(Long id) {
 
@@ -75,5 +81,21 @@ public class MemberServiceImpl implements MemberService{
         memberRepository.delete(findMember);
 
         return "유저가 성공적으로 삭제되었습니다.";
+    }
+
+    // 로그인 로직
+    @Override
+    public void login(LoginRequestDto requestDto, HttpSession httpSession) {
+
+        Member findMember = memberRepository.findByEmail(requestDto.getEmail()).orElseThrow();
+
+        if (Objects.equals(requestDto.getPassword(), findMember.getPassword())) {
+            httpSession.setAttribute("memberEmail", findMember.getEmail());
+        } else {
+            throw new RuntimeException("비밀번호가 다릅니다.");
+        }
+
+
+
     }
 }
