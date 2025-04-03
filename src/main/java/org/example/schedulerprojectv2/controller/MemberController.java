@@ -18,7 +18,7 @@ public class MemberController {
     private final MemberService memberService;
 
     // 유저 생성
-    @PostMapping("/signup")
+    @PostMapping("/signup")  // 사실상 회원가입이 여기서 진행됨 ( ★ )
     public ResponseEntity<MemberResponseDto> createMember(@RequestBody CreateMemberRequestDto requestDto) {
 
         MemberResponseDto responseDto = memberService.createMember(requestDto.getUserName(), requestDto.getEmail(), requestDto.getPassword());
@@ -38,7 +38,6 @@ public class MemberController {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.UNAUTHORIZED);
         }
     }
-
 
     // 유저 전체 조회
     @GetMapping

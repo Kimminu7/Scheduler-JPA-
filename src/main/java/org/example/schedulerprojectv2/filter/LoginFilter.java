@@ -12,6 +12,7 @@ import java.io.IOException;
 @Slf4j
 public class LoginFilter implements Filter {
 
+    // URL 전부다 동일하게 경로를 작성해주어야 한다.
     private static final String[] WHITE_LIST = {"/","/api/members/signup","/api/members/login","/api/members/logout"};
 
     @Override
