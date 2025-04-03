@@ -3,7 +3,7 @@ package org.example.schedulerprojectv2.controller;
 import lombok.RequiredArgsConstructor;
 import org.example.schedulerprojectv2.dto.schedule.CreateScheduleRequetsDto;
 import org.example.schedulerprojectv2.dto.schedule.ScheduleResponseDto;
-import org.example.schedulerprojectv2.dto.schedule.UpdateRequestDto;
+import org.example.schedulerprojectv2.dto.schedule.UpdateScheduleRequestDto;
 import org.example.schedulerprojectv2.service.ScheduleService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -50,9 +50,9 @@ public class ScheduleController {
 
     // 일정 수정
     @PutMapping("/{id}")
-    public ResponseEntity<String> update(
+    public ResponseEntity<String> updateSchedule(
             @PathVariable Long id,
-            @RequestBody UpdateRequestDto requestDto
+            @RequestBody UpdateScheduleRequestDto requestDto
     ) {
         String requestUpdate = scheduleService.update(id, requestDto.getTitle(), requestDto.getContents());
 
@@ -60,11 +60,11 @@ public class ScheduleController {
     }
     // 일정 삭제
     @DeleteMapping("/{id}")
-    public ResponseEntity<String> delete(@PathVariable Long id) {
+    public ResponseEntity<String> deleteSchedule(@PathVariable Long id) {
 
-        String requestDelete = scheduleService.delete(id);
+        String responseDelete = scheduleService.delete(id);
 
-        return new ResponseEntity<>(requestDelete,HttpStatus.OK);
+        return new ResponseEntity<>(responseDelete,HttpStatus.OK);
     }
 
 }

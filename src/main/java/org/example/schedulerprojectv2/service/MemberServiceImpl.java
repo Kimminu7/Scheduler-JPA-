@@ -44,7 +44,36 @@ public class MemberServiceImpl implements MemberService{
 
     // 유저 정보 전체 수정
     @Override
-    public MemberResponseDto update() {
-        return null;
+    public String update(Long id, String userName, String email, String password) {
+
+        Member findMember = memberRepository.findByIdOrElseThrow(id);
+
+        findMember.update(userName, email, password);
+
+        memberRepository.save(findMember);
+
+        return "id = " + id + " 사용자 정보가 성공적으로 수정되었습니다";
+    }
+
+    @Override
+    public String updatePassword(Long id, String password) {
+
+        Member findMember = memberRepository.findByIdOrElseThrow(id);
+
+        findMember.updatePassword(password);
+
+        Member updatedMember = memberRepository.save(findMember);
+        // 비밀번호 확인용으로 호출 ( 절대로 민감정보를 노출해선 안됨 ! ! )
+        return "password = " + updatedMember.getPassword() + " 비밀번호가 성공적으로 변경되었습니다.";
+    }
+
+    @Override
+    public String delete(Long id) {
+
+        Member findMember = memberRepository.findByIdOrElseThrow(id);
+
+        memberRepository.delete(findMember);
+
+        return "유저가 성공적으로 삭제되었습니다.";
     }
 }

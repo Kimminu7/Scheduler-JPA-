@@ -1,14 +1,13 @@
 package org.example.schedulerprojectv2.controller;
 
 import lombok.RequiredArgsConstructor;
-import org.example.schedulerprojectv2.dto.schedule.UpdateRequestDto;
-import org.example.schedulerprojectv2.dto.user.CreateMemberRequestDto;
-import org.example.schedulerprojectv2.dto.user.MemberResponseDto;
+import org.example.schedulerprojectv2.dto.user.*;
 import org.example.schedulerprojectv2.service.MemberService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.swing.text.html.HTML;
 import java.util.List;
 
 @RestController
@@ -47,16 +46,34 @@ public class MemberController {
 
     // 유저 정보 전체 수정
     @PutMapping("/{id}")
-    public ResponseEntity<MemberResponseDto> update(
+    public ResponseEntity<String> updateMember(
             @PathVariable Long id,
-            @RequestBody UpdateRequestDto requestDto
+            @RequestBody UpdateMemberRequestDto requestDto
+            ) {
+
+        String updateInfo = memberService.update(id, requestDto.getUserName(), requestDto.getEmail(), requestDto.getPassword());
+
+        return new ResponseEntity<>(updateInfo,HttpStatus.OK);
+    }
+
+    // 유저 비밀번호 수정
+    @PatchMapping("/{id}")
+    public ResponseEntity<String> updatePassword(
+            @PathVariable Long id,
+            @RequestBody UpdateMemberPasswordRequestDto requestDto
     ) {
 
-        MemberResponseDto responseDto = memberService.update();
+        String updatePassword = memberService.updatePassword(id, requestDto.getPassword());
 
-        return new ResponseEntity<>(responseDto,HttpStatus.OK);
+        return new ResponseEntity<>(updatePassword,HttpStatus.OK);
     }
-    // 유저 패스워드 수정
 
     // 유저 삭제
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> deleteMember(@PathVariable Long id) {
+
+        String deleteResponse = memberService.delete(id);
+
+        return new ResponseEntity<>(deleteResponse,HttpStatus.OK);
+    }
 }

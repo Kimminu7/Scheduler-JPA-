@@ -30,4 +30,14 @@ public class Member extends BaseEntity {
     public Member() {
 
     }
+
+    public void update(String userName, String email, String password) {
+        this.userName = userName;
+        this.email = email;
+        this.password = password;
+    }
+
+    public void updatePassword(String password) {
+        this.password = password;
+    }
 }

@@ -12,5 +12,9 @@ public interface MemberService {
 
     MemberResponseDto findById(Long id);
 
-    MemberResponseDto update();
+    String update(Long id, String userName, String email, String password);
+
+    String updatePassword(Long id, String password);
+
+    String delete(Long id);
 }
