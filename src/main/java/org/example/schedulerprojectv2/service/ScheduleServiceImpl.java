@@ -6,26 +6,24 @@ import org.example.schedulerprojectv2.entity.Member;
 import org.example.schedulerprojectv2.entity.Schedule;
 import org.example.schedulerprojectv2.repository.MemberRepository;
 import org.example.schedulerprojectv2.repository.ScheduleRepository;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
+
 
 
 import java.util.List;
-
 
 @Service
 @RequiredArgsConstructor
 public class ScheduleServiceImpl implements ScheduleService {
 
     private final ScheduleRepository scheduleRepository;
-    private final MemberRepository memberRepository;
+    private final MemberRepository memberRepository; // 멤버에서 조회한 값을 가져와야 하기 때문에 의존성 주입을 받는다.
 
     // 일정 생성
-    // @Transactional // 트랜잭션 환경으로 만들어준다.
     @Override
     public ScheduleResponseDto addSchedule(Long id, String title, String contents, String requetsDtoContents) {
 
+        // 튜터님의 새로운 예외처리 방법 !! Optional 예외처리 하는법 대체
         Member member = memberRepository.findById(id).orElseThrow(
                 () -> new RuntimeException("Not Found Member" + id)
         );
@@ -57,15 +55,16 @@ public class ScheduleServiceImpl implements ScheduleService {
     }
 
     // 일정 수정
-    @Transactional // 도 가능함. ( 영속성 컨텍스트 ?? ) . . . 트랜잭션 단위를 잡는역할?
+    //@Transactional // 도 가능함. ( 영속성 컨텍스트 ?? ) . . . 트랜잭션 단위를 잡는역할?
+    // 1 2 3 하나로 묶는다
     @Override
     public String update(Long id, String title, String contents) {
 
         Schedule findSchedule = scheduleRepository.findByIdOrElseThrow(id);
 
         findSchedule.update(title,contents);
-
-        //scheduleRepository.save(findSchedule);
+        // 여기서 예외가발생하면? 롤백?
+        scheduleRepository.save(findSchedule);
 
         return "일정이 성공적으로 수정되었습니다.";
     }
