@@ -8,8 +8,6 @@ import org.example.schedulerprojectv2.repository.MemberRepository;
 import org.example.schedulerprojectv2.repository.ScheduleRepository;
 import org.springframework.stereotype.Service;
 
-
-
 import java.util.List;
 
 @Service
