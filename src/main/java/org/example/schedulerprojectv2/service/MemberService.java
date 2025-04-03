@@ -1,6 +1,6 @@
 package org.example.schedulerprojectv2.service;
 
-import org.example.schedulerprojectv2.dto.user.MemberResponseDto;
+import org.example.schedulerprojectv2.dto.member.MemberResponseDto;
 
 import java.util.List;
 

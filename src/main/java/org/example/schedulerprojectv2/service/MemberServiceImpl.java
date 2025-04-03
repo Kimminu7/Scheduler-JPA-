@@ -1,7 +1,7 @@
 package org.example.schedulerprojectv2.service;
 
 import lombok.RequiredArgsConstructor;
-import org.example.schedulerprojectv2.dto.user.MemberResponseDto;
+import org.example.schedulerprojectv2.dto.member.MemberResponseDto;
 import org.example.schedulerprojectv2.entity.Member;
 import org.example.schedulerprojectv2.repository.MemberRepository;
 import org.springframework.stereotype.Service;

@@ -1,4 +1,4 @@
-package org.example.schedulerprojectv2.dto.user;
+package org.example.schedulerprojectv2.dto.member;
 
 import lombok.Getter;
 import org.example.schedulerprojectv2.entity.Member;

@@ -1,13 +1,12 @@
 package org.example.schedulerprojectv2.controller;
 
 import lombok.RequiredArgsConstructor;
-import org.example.schedulerprojectv2.dto.user.*;
+import org.example.schedulerprojectv2.dto.member.*;
 import org.example.schedulerprojectv2.service.MemberService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.swing.text.html.HTML;
 import java.util.List;
 
 @RestController
