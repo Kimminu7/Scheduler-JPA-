@@ -70,15 +70,15 @@
 
 ### Lv0. API 명세서 및 ERD 작성
 
-#### ※ 일정 관리 API 명세서
+### ※ 일정 관리 API 명세서
 
 #### <a href="https://workable-hacksaw-44c.notion.site/1cacef54a3568093af7cff9795966c22?v=1cacef54a35681258ab8000cae49b073">일정 관리 API 명세서(v2)</a>
 
-#### ※ ERD 작성
+### ※ ERD 작성
 ![img.png](img.png)
 
 
-#### ※ SQL 
+### ※ SQL 
 ![img_1.png](img_1.png)
 
 ### Lv1. 일정 CRUD
