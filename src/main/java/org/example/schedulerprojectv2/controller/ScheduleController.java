@@ -25,10 +25,6 @@ public class ScheduleController {
             @RequestParam Long userId,
             @RequestBody CreateScheduleRequetsDto requetsDto
     ) {
-
-        //로그인 여부 확인 로직
-
-
         ScheduleResponseDto responseDto = scheduleService.addSchedule(userId ,requetsDto.getTitle(), requetsDto.getUserName(), requetsDto.getContents());
 
         return new ResponseEntity<>(responseDto, HttpStatus.CREATED);

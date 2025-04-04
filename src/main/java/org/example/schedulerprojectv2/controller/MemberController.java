@@ -26,6 +26,7 @@ public class MemberController {
         return new ResponseEntity<>(responseDto, HttpStatus.CREATED);
     }
 
+    // 로그인 로직
     @PostMapping("/login")
     public ResponseEntity<String> login(
             @RequestBody LoginRequestDto requestDto,
