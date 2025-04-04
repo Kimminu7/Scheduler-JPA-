@@ -4,6 +4,67 @@
 #### 기간 : 2025. 3. 27 ~ 2025. 04. 04
 #### 개발 인원 : 1명
 
+## 프로젝트 구조
+```plaintext
+└─src
+    ├─main
+    │  ├─java
+    │  │  └─org
+    │  │      └─example
+    │  │          └─schedulerprojectv2
+    │  │              │  SchedulerProjectV2Application.java
+    │  │              │
+    │  │              ├─config
+    │  │              │      WebConfig.java
+    │  │              │
+    │  │              ├─controller
+    │  │              │      MemberController.java
+    │  │              │      ScheduleController.java
+    │  │              │
+    │  │              ├─dto
+    │  │              │  ├─member
+    │  │              │  │      CreateMemberRequestDto.java
+    │  │              │  │      LoginRequestDto.java
+    │  │              │  │      MemberResponseDto.java
+    │  │              │  │      UpdateMemberPasswordRequestDto.java
+    │  │              │  │      UpdateMemberRequestDto.java
+    │  │              │  │
+    │  │              │  └─schedule
+    │  │              │          CreateScheduleRequetsDto.java
+    │  │              │          ScheduleResponseDto.java
+    │  │              │          UpdateScheduleRequestDto.java
+    │  │              │
+    │  │              ├─entity
+    │  │              │      BaseEntity.java
+    │  │              │      Member.java
+    │  │              │      Schedule.java
+    │  │              │
+    │  │              ├─filter
+    │  │              │      LoginFilter.java
+    │  │              │
+    │  │              ├─repository
+    │  │              │      MemberRepository.java
+    │  │              │      ScheduleRepository.java
+    │  │              │
+    │  │              └─service
+    │  │                      MemberService.java
+    │  │                      MemberServiceImpl.java
+    │  │                      ScheduleService.java
+    │  │                      ScheduleServiceImpl.java
+    │  │
+    │  └─resources
+    │      │  application.properties
+    │      │
+    │      ├─static
+    │      └─templates
+    └─test
+        └─java
+            └─org
+                └─example
+                    └─schedulerprojectv2
+                            SchedulerProjectV2ApplicationTests.java
+
+```
 
 ## ⭐필수 
 
