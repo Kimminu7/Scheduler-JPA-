@@ -1,6 +1,7 @@
 package org.example.schedulerprojectv2.controller;
 
 import jakarta.servlet.http.HttpSession;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.example.schedulerprojectv2.dto.schedule.CreateScheduleRequetsDto;
 import org.example.schedulerprojectv2.dto.schedule.ScheduleResponseDto;
@@ -8,7 +9,7 @@ import org.example.schedulerprojectv2.dto.schedule.UpdateScheduleRequestDto;
 import org.example.schedulerprojectv2.service.ScheduleService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.annotation.Validated;
+
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -16,7 +17,6 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/schedules")
 @RequiredArgsConstructor
-@Validated
 public class ScheduleController {
 
     private final ScheduleService scheduleService;
@@ -25,7 +25,7 @@ public class ScheduleController {
     @PostMapping
     public ResponseEntity<ScheduleResponseDto> addSchedule(
             @RequestParam Long userId,
-            @Validated @RequestBody CreateScheduleRequetsDto requetsDto
+            @Valid @RequestBody CreateScheduleRequetsDto requetsDto
     ) {
         ScheduleResponseDto responseDto = scheduleService.addSchedule(userId ,requetsDto.getTitle(), requetsDto.getUserName(), requetsDto.getContents());
 
@@ -54,7 +54,7 @@ public class ScheduleController {
     @PutMapping("/{id}")
     public ResponseEntity<String> updateSchedule(
             @PathVariable Long id,
-            @Validated @RequestBody UpdateScheduleRequestDto requestDto,
+            @Valid @RequestBody UpdateScheduleRequestDto requestDto,
             HttpSession httpSession
     ) {
         String memberEmail = (String) httpSession.getAttribute("memberEmail");

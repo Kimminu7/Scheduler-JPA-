@@ -1,6 +1,7 @@
 package org.example.schedulerprojectv2.controller;
 
 import jakarta.servlet.http.HttpSession;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.example.schedulerprojectv2.dto.member.*;
 import org.example.schedulerprojectv2.service.MemberService;
@@ -20,7 +21,7 @@ public class MemberController {
 
     // 유저 생성
     @PostMapping("/signup")  // 사실상 회원가입이 여기서 진행됨 ( ★ )
-    public ResponseEntity<MemberResponseDto> createMember(@Validated @RequestBody CreateMemberRequestDto requestDto) {
+    public ResponseEntity<MemberResponseDto> createMember(@Valid @RequestBody CreateMemberRequestDto requestDto) {
 
         MemberResponseDto responseDto = memberService.createMember(requestDto.getUserName(), requestDto.getEmail(), requestDto.getPassword());
 
@@ -76,7 +77,7 @@ public class MemberController {
     @PutMapping("/{id}")
     public ResponseEntity<String> updateMember(
             @PathVariable Long id,
-            @Validated @RequestBody UpdateMemberRequestDto requestDto
+            @Valid @RequestBody UpdateMemberRequestDto requestDto
             ) {
 
         String updateInfo = memberService.update(id, requestDto.getUserName(), requestDto.getEmail(), requestDto.getPassword());
@@ -88,7 +89,7 @@ public class MemberController {
     @PatchMapping("/{id}")
     public ResponseEntity<String> updatePassword(
             @PathVariable Long id,
-            @Validated @RequestBody UpdateMemberPasswordRequestDto requestDto
+            @Valid @RequestBody UpdateMemberPasswordRequestDto requestDto
     ) {
 
         String updatePassword = memberService.updatePassword(id, requestDto.getPassword());
