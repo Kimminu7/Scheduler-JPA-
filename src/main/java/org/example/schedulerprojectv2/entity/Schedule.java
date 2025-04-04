@@ -2,10 +2,12 @@ package org.example.schedulerprojectv2.entity;
 
 import jakarta.persistence.*;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 @Getter
 @Entity
 @Table(name = "schedule")
+@NoArgsConstructor
 public class Schedule extends BaseEntity{
 
     @Id
@@ -15,7 +17,7 @@ public class Schedule extends BaseEntity{
     @Column(nullable = false)
     private String title;
 
-    @ManyToOne // 연관관계??.. 다수의 코드오류 발생
+    @ManyToOne // 연관관계
     @JoinColumn(name = "user_id")
     private Member member;
 
@@ -28,16 +30,8 @@ public class Schedule extends BaseEntity{
         this.member = member;
     }
 
-    public Schedule() {
-
-    }
-
     public void update(String title, String contents) {
         this.title = title;
         this.contents = contents;
-    }
-
-    public void setUser(Member member) {
-        this.member = member;
     }
 }

@@ -3,10 +3,12 @@ package org.example.schedulerprojectv2.entity;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 @Getter
 @Entity
 @Table(name = "member")
+@NoArgsConstructor
 public class Member extends BaseEntity {
 
     @Id
@@ -28,9 +30,6 @@ public class Member extends BaseEntity {
         this.password = password;
     }
 
-    public Member() {
-
-    }
 
     public void update(String userName, String email, String password) {
         this.userName = userName;

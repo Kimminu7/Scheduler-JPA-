@@ -6,6 +6,7 @@ import org.example.schedulerprojectv2.dto.member.LoginRequestDto;
 import org.example.schedulerprojectv2.dto.member.MemberResponseDto;
 import org.example.schedulerprojectv2.entity.Member;
 import org.example.schedulerprojectv2.repository.MemberRepository;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -82,7 +83,7 @@ public class MemberServiceImpl implements MemberService{
         return "유저가 성공적으로 삭제되었습니다.";
     }
 
-    // 로그인 로직
+    // 로그인 ( + 튜터님 도움 )
     @Override
     public void login(LoginRequestDto requestDto, HttpSession httpSession) {
 
@@ -93,15 +94,12 @@ public class MemberServiceImpl implements MemberService{
         } else {
             throw new RuntimeException("비밀번호가 다릅니다.");
         }
-
-
-
     }
 
+    // 로그아웃
     @Override
     public void logout(HttpSession httpSession) {
 
-        httpSession.invalidate();
-
+        httpSession.invalidate(); // 세션 끊기
     }
 }
