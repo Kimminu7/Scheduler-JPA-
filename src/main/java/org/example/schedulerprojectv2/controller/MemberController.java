@@ -31,7 +31,7 @@ public class MemberController {
     // 로그인
     @PostMapping("/login")
     public ResponseEntity<String> login(
-            @Validated @RequestBody LoginRequestDto requestDto,
+            @Valid @RequestBody LoginRequestDto requestDto,
             HttpSession httpSession
     ) {
         try {

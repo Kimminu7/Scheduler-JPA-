@@ -79,7 +79,7 @@
 
 
 ### ※ SQL 
-![img_1.png](img_1.png)
+![img_2.png](img_2.png)
 
 ### Lv1. 일정 CRUD
 
