@@ -98,4 +98,11 @@ public class MemberServiceImpl implements MemberService{
 
 
     }
+
+    @Override
+    public void logout(HttpSession httpSession) {
+
+        httpSession.invalidate();
+
+    }
 }

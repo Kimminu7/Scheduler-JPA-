@@ -21,4 +21,6 @@ public interface MemberService {
     String delete(Long id);
 
     void login(LoginRequestDto requestDto, HttpSession httpSession);
+
+    void logout(HttpSession httpSession);
 }

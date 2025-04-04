@@ -7,6 +7,7 @@ import org.example.schedulerprojectv2.service.MemberService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
@@ -26,7 +27,7 @@ public class MemberController {
         return new ResponseEntity<>(responseDto, HttpStatus.CREATED);
     }
 
-    // 로그인 로직
+    // 로그인
     @PostMapping("/login")
     public ResponseEntity<String> login(
             @RequestBody LoginRequestDto requestDto,
@@ -39,6 +40,19 @@ public class MemberController {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.UNAUTHORIZED);
         }
     }
+
+    // 로그아웃  ( 이 경우는 연결된 세션을 끊으면 되니까? invalidate )
+    @PostMapping("/logout")
+    public ResponseEntity<String> logout(HttpSession httpSession) {
+
+        try {
+            memberService.logout(httpSession);
+            return new ResponseEntity<>("로그아웃 성공!",HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(e.getMessage(),HttpStatus.UNAUTHORIZED);
+        }
+    }
+
 
     // 유저 전체 조회
     @GetMapping

@@ -77,6 +77,10 @@
 #### ※ ERD 작성
 ![img.png](img.png)
 
+
+#### ※ SQL 
+![img_1.png](img_1.png)
+
 ### Lv1. 일정 CRUD
 
 - [ ]  일정을 생성, 조회, 수정, 삭제할 수 있습니다.
