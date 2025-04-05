@@ -6,7 +6,6 @@ import lombok.Getter;
 @Getter
 public class CreateScheduleRequetsDto {
 
-
     @Size(min = 5, message = "제목은 최소 5글자 이상 이어야 합니다.")
     private final String title;
 
