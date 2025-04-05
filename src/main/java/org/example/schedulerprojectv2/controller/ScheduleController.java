@@ -27,7 +27,7 @@ public class ScheduleController {
             @RequestParam Long userId,
             @Valid @RequestBody CreateScheduleRequetsDto requetsDto
     ) {
-        ScheduleResponseDto responseDto = scheduleService.addSchedule(userId ,requetsDto.getTitle(), requetsDto.getUserName(), requetsDto.getContents());
+        ScheduleResponseDto responseDto = scheduleService.addSchedule(userId ,requetsDto.getTitle(), requetsDto.getContents());
 
         return new ResponseEntity<>(responseDto, HttpStatus.CREATED);
     }

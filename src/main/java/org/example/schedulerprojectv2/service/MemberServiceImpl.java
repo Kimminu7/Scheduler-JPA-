@@ -6,7 +6,6 @@ import org.example.schedulerprojectv2.dto.member.LoginRequestDto;
 import org.example.schedulerprojectv2.dto.member.MemberResponseDto;
 import org.example.schedulerprojectv2.entity.Member;
 import org.example.schedulerprojectv2.repository.MemberRepository;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

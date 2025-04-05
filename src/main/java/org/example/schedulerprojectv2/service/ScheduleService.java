@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface ScheduleService {
 
-    ScheduleResponseDto addSchedule(Long id,String title, String contents, String requetsDtoContents);
+    ScheduleResponseDto addSchedule(Long id,String title, String contents);
 
     List<ScheduleResponseDto> findAll();
 

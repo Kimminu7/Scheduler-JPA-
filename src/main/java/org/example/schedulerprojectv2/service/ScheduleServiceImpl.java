@@ -19,14 +19,16 @@ public class ScheduleServiceImpl implements ScheduleService {
 
     // 일정 생성
     @Override
-    public ScheduleResponseDto addSchedule(Long id, String title, String contents, String requetsDtoContents) {
+    public ScheduleResponseDto addSchedule(Long id, String title, String contents) {
 
         // 튜터님의 새로운 예외처리 방법 !! Optional 예외처리 하는법 대체
-        Member member = memberRepository.findById(id).orElseThrow(
-                () -> new RuntimeException("Not Found Member" + id)
-        );
+//        Member member = memberRepository.findById(id).orElseThrow(
+//                () -> new RuntimeException("Not Found Member" + id)
+//        );
 
-        Schedule schedule = new Schedule(title, contents, member);
+        Member findMember = memberRepository.findByIdOrElseThrow(id);
+
+        Schedule schedule = new Schedule(title, contents, findMember);
 
         Schedule addSchdule = scheduleRepository.save(schedule);
 
